@@ -22,3 +22,4 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "vite": "^5.2.0"
   }
+  https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
