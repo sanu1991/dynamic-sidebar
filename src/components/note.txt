@@ -23,3 +23,5 @@
     "vite": "^5.2.0"
   }
   https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
+
+  https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github
