@@ -1,9 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-// import Select from "react-select";
-// import Col from "react-bootstrap/Col";
-// import Form from "react-bootstrap/Form";
-// import Row from "react-bootstrap/Row";
 
 function SelectboxComponent({
   autoFocus,
@@ -12,11 +8,6 @@ function SelectboxComponent({
   handleChange,
   elementName,
 }) {
-  const [selectdata, setSelectData] = React.useState([]);
-
-  // React.useEffect(() => {
-  //   objData?.items.length > 0 ? setSelectData(objData?.items) : apicall();
-  // }, []);
 
   return (
     <>

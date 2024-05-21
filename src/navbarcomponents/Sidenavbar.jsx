@@ -15,20 +15,7 @@ const SidenavbarCom = React.forwardRef(
     {
       navbardata,
       activeCreateButton,
-      // header,
       logo,
-      // expandType,
-      // backgroundColor,
-      // iconColor,
-      // iconHoverColor,
-      // captionColor,
-      // captionHoverColor,
-      // expandIconColor,
-      // expandIconDeviderColor,
-      // searchIconColor,
-      // expandableTime,
-      // searchHighlightBackgroundColor,
-      // collapseButtonColor,
       saveNewData,
     },
     ref
@@ -489,10 +476,6 @@ const SidenavbarCom = React.forwardRef(
         return navData;
       },
     }));
-
-    // React.useEffect(() => {
-    //   console.log(styleData);
-    // }, [styleData]);
 
     return (
       <>

@@ -12,7 +12,6 @@ const Layout = () => {
     console.log(styleData);
   };
   return (
-    // <>
     <div
       style={{
         width: "100%",
@@ -24,22 +23,7 @@ const Layout = () => {
         navbardata={navData}
         activeCreateButton={isCreateModeOn} // only for demo purpose
         saveNewData={() => saveNewData()}
-        // expandType="click"
-        // // expandType="hover"
-        // header="logo"
-        // // header="normal"
         logo={logo} // mendatory if header="logo"
-        // backgroundColor="rgba(0, 0, 0, 0.7)"
-        // iconColor="white"
-        // iconHoverColor="skyblue"
-        // captionColor="white"
-        // captionHoverColor="skyblue"
-        // expandIconColor="black"
-        // expandIconDeviderColor="black"
-        // searchIconColor="white"
-        // expandableTime=".5s"
-        // searchHighlightBackgroundColor="#f2fa52"
-        // collapseButtonColor="black"
       />
       <div
         style={{
