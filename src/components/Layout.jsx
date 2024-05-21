@@ -25,7 +25,7 @@ const Layout = () => {
   //             icon: "",
   //             visible: false,
   //             caption: "Blogs",
-  //             link: "/blogs",
+  //             link: "/dynamic-sidebar/blogs",
   //             sub: [],
   //           },
   //           {
@@ -33,7 +33,7 @@ const Layout = () => {
   //             icon: "",
   //             visible: false,
   //             caption: "Contact",
-  //             link: "/contact",
+  //             link: "/dynamic-sidebar/contact",
   //             sub: [],
   //           },
   //         ],
