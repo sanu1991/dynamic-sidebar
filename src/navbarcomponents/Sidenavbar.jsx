@@ -8,33 +8,61 @@ import { v4 as uuidv4 } from "uuid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import SelectboxComponent from "./SelectboxComponent";
 
 const SidenavbarCom = React.forwardRef(
   (
     {
       navbardata,
       activeCreateButton,
-      header,
+      // header,
       logo,
-      expandType,
-      backgroundColor,
-      iconColorClass,
-      captionColorClass,
-      expandIconColor,
-      expandIconDeviderColor,
-      searchIconColor,
-      expandableTime,
-      searchHighlightBackgroundColor,
-      collapseButtonColor,
+      // expandType,
+      // backgroundColor,
+      // iconColor,
+      // iconHoverColor,
+      // captionColor,
+      // captionHoverColor,
+      // expandIconColor,
+      // expandIconDeviderColor,
+      // searchIconColor,
+      // expandableTime,
+      // searchHighlightBackgroundColor,
+      // collapseButtonColor,
       saveNewData,
     },
     ref
   ) => {
+    const cssData = {
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      header: "1",
+      expandType: "1",
+      expandIconColor: "white",
+      expandIconDeviderColor: "black",
+      iconColor: "white",
+      iconHoverColor: "skyblue",
+      captionColor: "white",
+      captionHoverColor: "skyblue",
+      searchIconColor: "white",
+      expandableTime: ".5s",
+      searchHighlightBackgroundColor: "#f2fa52",
+      collapseButtonColor: "black",
+    };
+    const expandTypeData = [
+      { id: "1", name: "click" },
+      { id: "2", name: "hover" },
+    ];
+    const headerTypeData = [
+      { id: "1", name: "normal" },
+      { id: "2", name: "logo" },
+    ];
     const [navData, setNavData] = React.useState([...navbardata]);
+    const [styleData, setStyleData] = React.useState({ ...cssData });
     const [srchData, setsrchData] = React.useState("");
     const [filterData, setFilterData] = React.useState([]);
     const [openNav, setOpenNav] = React.useState(activeCreateButton);
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+    const [isStyleChPopupOpen, setIsStyleChPopupOpen] = React.useState(false);
     const [selectedElement, setSelectedElement] = React.useState({});
     const [selectedIndex, setSelectedIndex] = React.useState(null);
 
@@ -176,16 +204,32 @@ const SidenavbarCom = React.forwardRef(
           >
             {/* list icon */}
             <span
-              className={iconColorClass}
-              style={{ width: "10%", textAlign: "left" }}
+              // className={iconColorClass}
+              onMouseOver={(ele) =>
+                (ele.target.style.color = styleData?.iconHoverColor)
+              }
+              onMouseOut={(ele) =>
+                (ele.target.style.color = styleData?.iconColor)
+              }
+              style={{
+                width: "10%",
+                textAlign: "left",
+                color: styleData?.iconColor,
+              }}
             >
               <div dangerouslySetInnerHTML={{ __html: e?.icon }}></div>
             </span>
             {/* list name */}
             {openNav && (
               <span
-                className={captionColorClass}
+                onMouseOver={(ele) =>
+                  (ele.target.style.color = styleData?.captionHoverColor)
+                }
+                onMouseOut={(ele) =>
+                  (ele.target.style.color = styleData?.captionColor)
+                }
                 style={{
+                  color: styleData?.captionColor,
                   width: activeCreateButton ? "40%" : "80%",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -196,7 +240,7 @@ const SidenavbarCom = React.forwardRef(
               >
                 <Highlighter
                   highlightStyle={{
-                    backgroundColor: searchHighlightBackgroundColor,
+                    backgroundColor: styleData?.searchHighlightBackgroundColor,
                   }}
                   highlightClassName="YourHighlightClass"
                   searchWords={[srchData]}
@@ -208,8 +252,17 @@ const SidenavbarCom = React.forwardRef(
             {/* Add button */}
             {openNav && activeCreateButton && (
               <span
-                style={{ width: "10%", textAlign: "right" }}
-                className={captionColorClass}
+                style={{
+                  width: "10%",
+                  textAlign: "right",
+                  color: styleData?.captionColor,
+                }}
+                onMouseOver={(ele) =>
+                  (ele.target.style.color = styleData?.captionHoverColor)
+                }
+                onMouseOut={(ele) =>
+                  (ele.target.style.color = styleData?.captionColor)
+                }
                 onClick={() => {
                   addObjToChild(e);
                 }}
@@ -223,8 +276,17 @@ const SidenavbarCom = React.forwardRef(
             {/* edit button */}
             {openNav && activeCreateButton && (
               <span
-                style={{ width: "10%", textAlign: "right" }}
-                className={captionColorClass}
+                style={{
+                  width: "10%",
+                  textAlign: "right",
+                  color: styleData?.captionColor,
+                }}
+                onMouseOver={(ele) =>
+                  (ele.target.style.color = styleData?.captionHoverColor)
+                }
+                onMouseOut={(ele) =>
+                  (ele.target.style.color = styleData?.captionColor)
+                }
                 onClick={() => {
                   setIsPopupOpen(true);
                   setSelectedElement(e);
@@ -240,8 +302,17 @@ const SidenavbarCom = React.forwardRef(
             {/* delete button */}
             {openNav && activeCreateButton && (
               <span
-                style={{ width: "10%", textAlign: "right" }}
-                className={captionColorClass}
+                style={{
+                  width: "10%",
+                  textAlign: "right",
+                  color: styleData?.captionColor,
+                }}
+                onMouseOver={(ele) =>
+                  (ele.target.style.color = styleData?.captionHoverColor)
+                }
+                onMouseOut={(ele) =>
+                  (ele.target.style.color = styleData?.captionColor)
+                }
                 onClick={() => {
                   dltObj(e, i);
                 }}
@@ -255,8 +326,17 @@ const SidenavbarCom = React.forwardRef(
             {/* move button */}
             {openNav && activeCreateButton && (
               <span
-                style={{ width: "10%", textAlign: "right" }}
-                className={captionColorClass}
+                style={{
+                  width: "10%",
+                  textAlign: "right",
+                  color: styleData?.captionColor,
+                }}
+                onMouseOver={(ele) =>
+                  (ele.target.style.color = styleData?.captionHoverColor)
+                }
+                onMouseOut={(ele) =>
+                  (ele.target.style.color = styleData?.captionColor)
+                }
                 onDragStart={(ele) => {
                   ele.stopPropagation();
                   onDragStart(e, preItm, i);
@@ -272,10 +352,16 @@ const SidenavbarCom = React.forwardRef(
             {/* up / down button */}
             {openNav && e.sub.length !== 0 && (
               <span
-                className={captionColorClass}
+                onMouseOver={(ele) =>
+                  (ele.target.style.color = styleData?.captionHoverColor)
+                }
+                onMouseOut={(ele) =>
+                  (ele.target.style.color = styleData?.captionColor)
+                }
                 style={{
                   width: activeCreateButton ? "10%" : "20%",
                   textAlign: "right",
+                  color: styleData?.captionColor,
                 }}
                 onClick={() => {
                   setNavData(visibleFunc(navData, e?.id));
@@ -309,10 +395,10 @@ const SidenavbarCom = React.forwardRef(
     };
 
     const sidenavStyle = () => ({
-      transition: `${expandableTime}`,
+      transition: `${styleData?.expandableTime}`,
       zIndex: 1,
       position: "absolute",
-      display: "flex"
+      display: "flex",
     });
 
     // hot key (ctrl + alt + o  to open navbar) (ctrl + alt + c  to close navbar)
@@ -390,19 +476,23 @@ const SidenavbarCom = React.forwardRef(
     };
     // =================================================== //
 
+    const handleStyleChange = (value, eName) => {
+      setStyleData((pre) => ({ ...pre, [eName]: value }));
+    };
+
     // send states to parent
     React.useImperativeHandle(ref, () => ({
-      isNavbarOpen: () => {
-        return openNav;
+      styleData: () => {
+        return styleData;
       },
       newNavData: () => {
         return navData;
       },
     }));
 
-    React.useEffect(() => {
-      console.log(navData);
-    }, [navData]);
+    // React.useEffect(() => {
+    //   console.log(styleData);
+    // }, [styleData]);
 
     return (
       <>
@@ -412,19 +502,19 @@ const SidenavbarCom = React.forwardRef(
             openNav ? "sidenav openSidenavWidth" : "sidenav closeSidenavWidth"
           }
           onMouseEnter={() => {
-            expandType === "hover" && setOpenNav(true);
+            styleData?.expandType === "2" && setOpenNav(true);
           }}
           onMouseLeave={() => {
-            expandType === "hover" && setOpenNav(false);
-            expandType === "hover" && setsrchData("");
+            styleData?.expandType === "2" && setOpenNav(false);
+            styleData?.expandType === "2" && setsrchData("");
           }}
           style={sidenavStyle()}
         >
           <div
             style={{
               width: "100%",
-              backgroundColor: backgroundColor,
-              paddingRight: "2px"
+              backgroundColor: styleData?.backgroundColor,
+              paddingRight: "2px",
             }}
           >
             <div>
@@ -434,23 +524,25 @@ const SidenavbarCom = React.forwardRef(
                 style={{
                   textAlign: "center",
                   cursor: "pointer",
-                  color: expandIconColor,
                   borderBottom: `1px solid`,
-                  borderBottomColor: expandIconDeviderColor,
+                  borderBottomColor: styleData?.expandIconDeviderColor,
                 }}
               >
-                {header === "logo" ? (
+                {styleData?.header === "2" ? (
                   <img
                     className="logoSize"
                     style={{ borderRadius: "50%", margin: "5px" }}
                     src={logo}
                     alt="error!"
                   />
-                ) : header === "normal" ? (
+                ) : styleData?.header === "1" ? (
                   <span
-                    onClick={() => {
-                      expandType === "click" && setOpenNav(!openNav);
-                    }}
+                    onClick={() =>
+                      styleData?.expandType == "1" &&
+                      !activeCreateButton &&
+                      setOpenNav(!openNav)
+                    }
+                    style={{ color: styleData?.expandIconColor }}
                   >
                     &#9776;
                   </span>
@@ -458,12 +550,12 @@ const SidenavbarCom = React.forwardRef(
                   <p></p>
                 )}
               </div>
-              {/* search Icon / dnd btn / save btn */}
+              {/* search box-Icon / dnd btn / save btn */}
               {openNav ? (
                 <div className="input-group my-2" style={{ height: "25px" }}>
-                  {/* search Icon */}
+                  {/* search box */}
                   <input
-                    autoFocus
+                    autoFocus={activeCreateButton ? false : true}
                     type="text"
                     className="form-control form-control-sm"
                     id="formGroupExampleInput"
@@ -474,12 +566,28 @@ const SidenavbarCom = React.forwardRef(
                       srch(e.target.value, navData);
                     }}
                   />
+                  {/* css btn */}
+                  {activeCreateButton && (
+                    <span
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      title="Change Style"
+                      className="input-group-text"
+                      id="basic-addon1"
+                      onClick={() => setIsStyleChPopupOpen(true)}
+                    >
+                      <i
+                        style={{ fontSize: "12px" }}
+                        className="fa-solid fa-palette"
+                      ></i>
+                    </span>
+                  )}
                   {/* create btn */}
                   {activeCreateButton && (
                     <span
                       data-bs-toggle="tooltip"
                       data-bs-placement="right"
-                      title="Create Sidebar"
+                      title="Create Sidebar Data"
                       className="input-group-text"
                       id="basic-addon1"
                       onClick={() => addNewObj()}
@@ -513,7 +621,7 @@ const SidenavbarCom = React.forwardRef(
                   style={{
                     textAlign: "center",
                     height: "25px",
-                    color: searchIconColor,
+                    color: styleData?.searchIconColor,
                   }}
                   onClick={() => setOpenNav(true)}
                 >
@@ -535,7 +643,7 @@ const SidenavbarCom = React.forwardRef(
             </div>
           </div>
           {/* collapse on/off btn */}
-          {expandType === "click" && (
+          {styleData?.expandType === "1" && (
             <span
               data-bs-toggle="tooltip"
               data-bs-placement="right"
@@ -544,12 +652,12 @@ const SidenavbarCom = React.forwardRef(
                 display: "flex",
                 alignItems: "center",
                 textAlign: "center",
-                color: collapseButtonColor,
+                color: styleData?.collapseButtonColor,
               }}
             >
               <i
                 onClick={() =>
-                  expandType === "click" &&
+                  styleData?.expandType === "1" &&
                   !activeCreateButton &&
                   setOpenNav(!openNav)
                 }
@@ -563,8 +671,112 @@ const SidenavbarCom = React.forwardRef(
             </span>
           )}
         </div>
+        {/* popup */}
+        {isStyleChPopupOpen && (
+          <CustomPopup
+            setIsPopupOpen={setIsStyleChPopupOpen}
+            // overflowY="hidden"
+          >
+            <p className="m-2">Change Background Color</p>
+            <TextboxComponent
+              component={styleData?.backgroundColor}
+              placeholder="Enter Icon Color"
+              elementName="backgroundColor"
+              handleChange={(e) => handleStyleChange(e, "backgroundColor")}
+            />
+            <p className="m-2">Change Expand Type</p>
+            <SelectboxComponent
+              elementName="expandType"
+              autoFocus={true}
+              component={styleData?.expandType}
+              data={expandTypeData}
+              handleChange={(e) => handleStyleChange(e, "expandType")}
+            />
+            <p className="m-2">Change Expand Icon Color</p>
+            <TextboxComponent
+              component={styleData?.expandIconColor}
+              placeholder="Enter Expand Icon Color"
+              elementName="expandIconColor"
+              handleChange={(e) => handleStyleChange(e, "expandIconColor")}
+            />
+            <p className="m-2">Change Icon Devider Color</p>
+            <TextboxComponent
+              component={styleData?.expandIconDeviderColor}
+              placeholder="Enter Expand Icon Devider Color"
+              elementName="expandIconDeviderColor"
+              handleChange={(e) =>
+                handleStyleChange(e, "expandIconDeviderColor")
+              }
+            />
+            <p className="m-2">Change Search Icon Color</p>
+            <TextboxComponent
+              component={styleData?.searchIconColor}
+              placeholder="Enter Search Icon Color"
+              elementName="searchIconColor"
+              handleChange={(e) => handleStyleChange(e, "searchIconColor")}
+            />
+            <p className="m-2">Change Header Type</p>
+            <SelectboxComponent
+              elementName="header"
+              component={styleData?.header}
+              data={headerTypeData}
+              handleChange={(e) => handleStyleChange(e, "header")}
+            />
+            <p className="m-2">Change Icon Color</p>
+            <TextboxComponent
+              component={styleData?.iconColor}
+              placeholder="Enter Icon Color"
+              elementName="iconColor"
+              handleChange={(e) => handleStyleChange(e, "iconColor")}
+            />
+            <p className="m-2">Change Icon Hover Color</p>
+            <TextboxComponent
+              component={styleData?.iconHoverColor}
+              placeholder="Enter Icon Hover Color"
+              elementName="iconHoverColor"
+              handleChange={(e) => handleStyleChange(e, "iconHoverColor")}
+            />
+            <p className="m-2">Change Caption Color</p>
+            <TextboxComponent
+              component={styleData?.captionColor}
+              placeholder="Enter Caption Color"
+              elementName="captionColor"
+              handleChange={(e) => handleStyleChange(e, "captionColor")}
+            />
+            <p className="m-2">Change Caption Hover Color</p>
+            <TextboxComponent
+              component={styleData?.captionHoverColor}
+              placeholder="Enter Caption Hover Color"
+              elementName="captionHoverColor"
+              handleChange={(e) => handleStyleChange(e, "captionHoverColor")}
+            />
+            <p className="m-2">Change Expandable Time</p>
+            <TextboxComponent
+              component={styleData?.expandableTime}
+              placeholder="Enter Expandable Time"
+              elementName="expandableTime"
+              handleChange={(e) => handleStyleChange(e, "expandableTime")}
+            />
+            <p className="m-2">Change Search Highlight Background Color</p>
+            <TextboxComponent
+              component={styleData?.searchHighlightBackgroundColor}
+              placeholder="Enter Search Highlight Background Color"
+              elementName="searchHighlightBackgroundColor"
+              handleChange={(e) =>
+                handleStyleChange(e, "searchHighlightBackgroundColor")
+              }
+            />
+            <p className="m-2">Change Scollapse Button Color</p>
+            <TextboxComponent
+              component={styleData?.collapseButtonColor}
+              placeholder="Enter Scollapse Button Color"
+              elementName="collapseButtonColor"
+              handleChange={(e) => handleStyleChange(e, "collapseButtonColor")}
+            />
+          </CustomPopup>
+        )}
         {isPopupOpen && (
-          <CustomPopup setIsPopupOpen={setIsPopupOpen}>
+          <CustomPopup setIsPopupOpen={setIsPopupOpen} overflowY="hidden">
             <TextboxComponent
               component={selectedElement?.caption}
               index={selectedIndex}

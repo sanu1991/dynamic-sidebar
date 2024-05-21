@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomPopup = ({ setIsPopupOpen,children }) => {
+const CustomPopup = ({ overflowY, setIsPopupOpen, children }) => {
   return (
     <div
       style={{
@@ -13,7 +13,7 @@ const CustomPopup = ({ setIsPopupOpen,children }) => {
         top: 0,
         left: 0,
         backgroundColor: "rgba(187, 187, 187, 0.3)",
-        zIndex: 2
+        zIndex: 2,
       }}
     >
       <div
@@ -51,12 +51,13 @@ const CustomPopup = ({ setIsPopupOpen,children }) => {
         <div
           style={{
             padding: "0px",
-            maxHeight: "300px",
-            overflowY: "hidden",
+            maxHeight: "500px",
+            height: "auto",
+            overflowY: overflowY,
             overflowX: "hidden",
           }}
         >
-            {children}
+          {children}
         </div>
       </div>
     </div>

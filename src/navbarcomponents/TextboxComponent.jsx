@@ -3,7 +3,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-function TextboxComponent({ index, placeholder, component, autoFocus, handleChange, elementName }) {
+function TextboxComponent({
+  placeholder,
+  component,
+  autoFocus,
+  handleChange,
+  elementName,
+}) {
   return (
     <div className="m-2">
       <input
