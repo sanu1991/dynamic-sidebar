@@ -11,15 +11,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import SelectboxComponent from "./SelectboxComponent";
 
 const SidenavbarCom = React.forwardRef(
-  (
-    {
-      navbardata,
-      activeCreateButton,
-      logo,
-      saveNewData,
-    },
-    ref
-  ) => {
+  ({ navbardata, activeCreateButton, logo, saveNewData }, ref) => {
     const cssData = {
       backgroundColor: "rgba(0, 0, 0, 0.7)",
       header: "1",
@@ -239,6 +231,9 @@ const SidenavbarCom = React.forwardRef(
             {/* Add button */}
             {openNav && activeCreateButton && (
               <span
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Add Sub Dropdown"
                 style={{
                   width: "10%",
                   textAlign: "right",
@@ -263,6 +258,9 @@ const SidenavbarCom = React.forwardRef(
             {/* edit button */}
             {openNav && activeCreateButton && (
               <span
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Edit Dropdown"
                 style={{
                   width: "10%",
                   textAlign: "right",
@@ -289,6 +287,9 @@ const SidenavbarCom = React.forwardRef(
             {/* delete button */}
             {openNav && activeCreateButton && (
               <span
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Delete Dropdown"
                 style={{
                   width: "10%",
                   textAlign: "right",
@@ -313,6 +314,9 @@ const SidenavbarCom = React.forwardRef(
             {/* move button */}
             {openNav && activeCreateButton && (
               <span
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Move Dropdown"
                 style={{
                   width: "10%",
                   textAlign: "right",
