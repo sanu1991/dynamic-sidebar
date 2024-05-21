@@ -19,7 +19,7 @@ const Contact = () => {
         of Lorem Ipsum.
       </p>
       <button
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/dynamic-sidebar")}
         className="btn btn-sm btn-outline-danger"
         type="button"
       >
