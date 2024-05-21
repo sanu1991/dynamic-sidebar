@@ -1,8 +1,47 @@
 import React, { useState } from "react";
 import logo from "./logo.png";
 import Sidenavbar from "../navbarcomponents/Sidenavbar";
+import { v4 as uuidv4 } from "uuid";
 const Layout = () => {
   const childCompRef = React.useRef(null);
+  // dummy data
+  // const ndata = [
+  //   {
+  //     id: uuidv4().slice(0, 4),
+  //     icon: '<i class="fa-solid fa-star"></i>', // fontawesome icon
+  //     visible: false,
+  //     caption: "Dropdown",
+  //     link: "",
+  //     sub: [
+  //       {
+  //         id: uuidv4().slice(0, 4),
+  //         icon: "",
+  //         visible: false,
+  //         caption: "Sub dropdowns",
+  //         link: "",
+  //         sub: [
+  //           {
+  //             id: uuidv4().slice(0, 4),
+  //             icon: "",
+  //             visible: false,
+  //             caption: "Blogs",
+  //             link: "/blogs",
+  //             sub: [],
+  //           },
+  //           {
+  //             id: uuidv4().slice(0, 4),
+  //             icon: "",
+  //             visible: false,
+  //             caption: "Contact",
+  //             link: "/contact",
+  //             sub: [],
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // ];
+
   const [navData, setNavData] = useState([]);
   const [isCreateModeOn, setIsCreateModeOn] = useState(true); // only for demo purpose
   const saveNewData = () => {
@@ -69,39 +108,3 @@ const Layout = () => {
 };
 
 export default Layout;
-// const navbardata = [
-//   {
-//     id: uuidv4().slice(0, 4),
-//     icon: '<i class="fa-solid fa-star"></i>', // fontawesome icon
-//     visible: false,
-//     caption: "Dropdown",
-//     link: "",
-//     sub: [
-//       {
-//         id: uuidv4().slice(0, 4),
-//         icon: "",
-//         visible: false,
-//         caption: "Sub dropdowns",
-//         link: "",
-//         sub: [
-//           {
-//             id: uuidv4().slice(0, 4),
-//             icon: "",
-//             visible: false,
-//             caption: "Blogs",
-//             link: "/blogs",
-//             sub: [],
-//           },
-//           {
-//             id: uuidv4().slice(0, 4),
-//             icon: "",
-//             visible: false,
-//             caption: "Contact",
-//             link: "/contact",
-//             sub: [],
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
