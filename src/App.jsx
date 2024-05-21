@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Blogs from "./components/Blogs";
 import Contact from "./components/Contact";
@@ -10,13 +10,13 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 function App() {
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Layout />}></Route>
           <Route path="/blogs" exact element={<Blogs />}></Route>
           <Route path="/contact" exact element={<Contact />}></Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
       
     </>
   );
