@@ -25,7 +25,7 @@ const SidenavbarCom = React.forwardRef(
       searchIconColor: "white",
       expandableTime: ".5s",
       searchHighlightBackgroundColor: "#f2fa52",
-      collapseButtonColor: "black",
+      collapseButtonColor: "white",
     };
     const expandTypeData = [
       { id: "1", name: "click" },
@@ -39,7 +39,7 @@ const SidenavbarCom = React.forwardRef(
     const [styleData, setStyleData] = React.useState({ ...cssData });
     const [srchData, setsrchData] = React.useState("");
     const [filterData, setFilterData] = React.useState([]);
-    const [openNav, setOpenNav] = React.useState(activeCreateButton);
+    const [openNav, setOpenNav] = React.useState(false);
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
     const [isStyleChPopupOpen, setIsStyleChPopupOpen] = React.useState(false);
     const [selectedElement, setSelectedElement] = React.useState({});
@@ -179,7 +179,7 @@ const SidenavbarCom = React.forwardRef(
         >
           <div
             onClick={() => navigate(e?.link)}
-            style={{ display: "flex", width: "100%" }}
+            style={{ display: "flex", width: "100%", padding: "3px 0px" }}
           >
             {/* list icon */}
             <span
@@ -390,6 +390,7 @@ const SidenavbarCom = React.forwardRef(
       zIndex: 1,
       position: "absolute",
       display: "flex",
+      backgroundColor: styleData?.backgroundColor,
     });
 
     // hot key (ctrl + alt + o  to open navbar) (ctrl + alt + c  to close navbar)
@@ -481,6 +482,10 @@ const SidenavbarCom = React.forwardRef(
       },
     }));
 
+    React.useEffect(() => {
+      setOpenNav(activeCreateButton);
+    }, [activeCreateButton]);
+
     return (
       <>
         {/* sidebar */}
@@ -497,14 +502,9 @@ const SidenavbarCom = React.forwardRef(
           }}
           style={sidenavStyle()}
         >
-          <div
-            style={{
-              width: "100%",
-              backgroundColor: styleData?.backgroundColor,
-              paddingRight: "2px",
-            }}
-          >
-            <div>
+          {/* left part */}
+          <div style={{ width: "100%", height: "100%", padding: "0px" }}>
+            <div style={{ width: "100%", padding: "0px 0px 5px 0px" }}>
               {/* expand Icon */}
               <div
                 className="expandIconSize"
@@ -517,6 +517,15 @@ const SidenavbarCom = React.forwardRef(
               >
                 {styleData?.header === "2" ? (
                   <img
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title={
+                      activeCreateButton
+                        ? "Create Mode Off To Collapse"
+                        : openNav
+                        ? "Click to Collapse"
+                        : "Click to open"
+                    }
                     className="logoSize"
                     style={{ borderRadius: "50%", margin: "5px" }}
                     src={logo}
@@ -524,6 +533,15 @@ const SidenavbarCom = React.forwardRef(
                   />
                 ) : styleData?.header === "1" ? (
                   <span
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title={
+                      activeCreateButton
+                        ? "Create Mode Off To Collapse"
+                        : openNav
+                        ? "Click to Collapse"
+                        : "Click to open"
+                    }
                     onClick={() =>
                       styleData?.expandType == "1" &&
                       !activeCreateButton &&
@@ -574,7 +592,7 @@ const SidenavbarCom = React.forwardRef(
                     <span
                       data-bs-toggle="tooltip"
                       data-bs-placement="right"
-                      title="Create Sidebar Data"
+                      title="Create Dropdown"
                       className="input-group-text"
                       id="basic-addon1"
                       onClick={() => addNewObj()}
@@ -616,25 +634,25 @@ const SidenavbarCom = React.forwardRef(
                 </div>
               )}
             </div>
-            {/* side bar data */}
-            <div
-              style={{
-                padding: activeCreateButton
-                  ? "5px 10px 0px 15px"
-                  : "5px 10px 0px 15px",
-              }}
-            >
+            {/* dropdowns */}
+            <div className="dropdowns">
               {filterData.length === 0
                 ? Listmap(navData, {})
                 : Listmap(filterData, {})}
             </div>
           </div>
-          {/* collapse on/off btn */}
+          {/* right part collapse on/off btn */}
           {styleData?.expandType === "1" && (
             <span
               data-bs-toggle="tooltip"
               data-bs-placement="right"
-              title={activeCreateButton ? "Create Mode Off To Collapse" : ""}
+              title={
+                activeCreateButton
+                  ? "Create Mode Off To Collapse"
+                  : openNav
+                  ? "Click to Collapse"
+                  : "Click to open"
+              }
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -662,6 +680,7 @@ const SidenavbarCom = React.forwardRef(
         {isStyleChPopupOpen && (
           <CustomPopup
             setIsPopupOpen={setIsStyleChPopupOpen}
+            popupTitle="Change Sidebar Style"
             // overflowY="hidden"
           >
             <p className="m-2">Change Background Color</p>
@@ -763,7 +782,11 @@ const SidenavbarCom = React.forwardRef(
           </CustomPopup>
         )}
         {isPopupOpen && (
-          <CustomPopup setIsPopupOpen={setIsPopupOpen} overflowY="hidden">
+          <CustomPopup
+            popupTitle="Create Sidebar Data"
+            setIsPopupOpen={setIsPopupOpen}
+            overflowY="hidden"
+          >
             <TextboxComponent
               component={selectedElement?.caption}
               index={selectedIndex}

@@ -1,6 +1,7 @@
 import React from "react";
+import "./Sidenavbar.css";
 
-const CustomPopup = ({ overflowY, setIsPopupOpen, children }) => {
+const CustomPopup = ({ overflowY, setIsPopupOpen, children, popupTitle }) => {
   return (
     <div
       style={{
@@ -17,13 +18,12 @@ const CustomPopup = ({ overflowY, setIsPopupOpen, children }) => {
       }}
     >
       <div
+        className="popupSize"
         style={{
           display: "block",
           backgroundColor: "white",
           zIndex: 9,
           border: "1px solid #f7f7f7",
-          width: "40vw",
-          height: "auto",
           borderRadius: "10px",
         }}
       >
@@ -33,7 +33,7 @@ const CustomPopup = ({ overflowY, setIsPopupOpen, children }) => {
         >
           {/* popup title */}
           <span style={{ width: "90%" }} className="text-start">
-            <h6>Create Sidebar Data</h6>
+            <h6>{popupTitle}</h6>
           </span>
           {/* cross btn */}
           <span
@@ -51,8 +51,7 @@ const CustomPopup = ({ overflowY, setIsPopupOpen, children }) => {
         <div
           style={{
             padding: "0px",
-            maxHeight: "500px",
-            height: "auto",
+            height: "90%",
             overflowY: overflowY,
             overflowX: "hidden",
           }}
