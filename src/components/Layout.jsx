@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.png";
 import Sidenavbar from "../navbarcomponents/Sidenavbar";
+import CustomPopup from "../navbarcomponents/CustomPopup";
 // import { v4 as uuidv4 } from "uuid";
 const Layout = () => {
   const childCompRef = React.useRef(null);
@@ -44,6 +45,7 @@ const Layout = () => {
 
   const [navData, setNavData] = useState([]);
   const [isCreateModeOn, setIsCreateModeOn] = useState(true); // only for demo purpose
+  const [guidePopupOpen, setGuidePopupOpen] = useState(isCreateModeOn);
   const saveNewData = () => {
     const newNavData = childCompRef?.current?.newNavData();
     const styleData = childCompRef?.current?.styleData();
@@ -67,9 +69,12 @@ const Layout = () => {
       <div
         style={{
           width: "100%",
-          height: "10vh",
-          textAlign: "right",
+          // height: "10vh",
+          // textAlign: "right",
           padding: "10px 20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "right"
         }}
       >
         <label
@@ -81,8 +86,18 @@ const Layout = () => {
           style={{ margin: "0px 10px", width: "18px", height: "18px" }}
           type="checkbox"
           checked={isCreateModeOn}
-          onChange={(e) => setIsCreateModeOn(e?.target?.checked)}
+          onChange={(e) => {
+            setIsCreateModeOn(e?.target?.checked);
+            e?.target?.checked && setGuidePopupOpen(true);
+          }}
         />
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          onClick={() => setGuidePopupOpen(true)}
+        >
+          User Guide
+        </button>
       </div>
       <div
         style={{
@@ -102,6 +117,74 @@ const Layout = () => {
           <p style={{ fontSize: "5vw", margin: 0 }}>Sidebar component</p>
         </div>
       </div>
+      {guidePopupOpen && (
+        <CustomPopup setIsPopupOpen={setGuidePopupOpen} popupTitle="User Guide">
+          <p>
+            1. Click on{" "}
+            <i style={{ fontSize: "12px" }} className="fa-solid fa-palette"></i>{" "}
+            icon to change Sidebar style.
+          </p>
+          <p>
+            2. Click on{" "}
+            <i style={{ fontSize: "12px" }} className="fa-solid fa-plus"></i>{" "}
+            icon to add Dropdowns.
+          </p>
+          <p>
+            3. Click on{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-edit"
+            ></i>{" "}
+            icon to add caption, icon and link.
+          </p>
+          <p>
+            4. Click on{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-trash"
+            ></i>{" "}
+            icon to delete created dropdown.
+          </p>
+          <p>
+            5. Click on{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-plus"
+            ></i>{" "}
+            icon of created dropdown to create sub dropdown.
+          </p>
+          <p>
+            6. Click on{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-up-down-left-right"
+            ></i>{" "}
+            icon of created dropdown to change the position.
+          </p>
+          <p>
+            7. Click on{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-caret-down"
+            ></i>{" "}
+            icon to hide sub dropdowns and Click on{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-caret-up"
+            ></i>{" "}
+            icon to show sub dropdowns.
+          </p>
+          <p>
+            8. After create dropdown don't forget to click{" "}
+            <i
+              style={{ fontSize: "10px", cursor: "pointer" }}
+              className="fa-solid fa-save"
+            ></i>{" "}
+            icon to save dropdown and style data(saved data will show on your
+            console).
+          </p>
+        </CustomPopup>
+      )}
     </div>
     // </>
   );

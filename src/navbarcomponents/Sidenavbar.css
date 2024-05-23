@@ -47,8 +47,12 @@
     width: 30% !important;
 } */
 .popupSize {
-    width: 80% !important;
-    height: 80% !important;
+    width: 40% !important;
+    /* min-height: 30% !important;
+    max-height: 60% !important; */
+    /* height: auto; */
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .openSidenavWidth {
@@ -91,10 +95,10 @@
 } */
 
 @media (min-width: 767px) {
-    .popupSize {
+    /* .popupSize {
         width: 40% !important;
         height: 80% !important;
-    }
+    } */
 
     /* .createModeSidenavWidth {
         width: 30% !important;

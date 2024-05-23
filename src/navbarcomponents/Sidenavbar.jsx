@@ -681,7 +681,6 @@ const SidenavbarCom = React.forwardRef(
           <CustomPopup
             setIsPopupOpen={setIsStyleChPopupOpen}
             popupTitle="Change Sidebar Style"
-            // overflowY="hidden"
           >
             <p className="m-2">Change Background Color</p>
             <TextboxComponent
@@ -785,7 +784,6 @@ const SidenavbarCom = React.forwardRef(
           <CustomPopup
             popupTitle="Create Sidebar Data"
             setIsPopupOpen={setIsPopupOpen}
-            overflowY="hidden"
           >
             <TextboxComponent
               component={selectedElement?.caption}
