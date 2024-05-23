@@ -93,7 +93,7 @@ const Layout = () => {
         />
         <button
           type="button"
-          class="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm"
           onClick={() => setGuidePopupOpen(true)}
         >
           User Guide
@@ -180,8 +180,10 @@ const Layout = () => {
               style={{ fontSize: "10px", cursor: "pointer" }}
               className="fa-solid fa-save"
             ></i>{" "}
-            icon to save dropdown and style data(saved data will show on your
-            console).
+            icon to save dropdown and style data(saved data will show on your console).
+          </p>
+          <p>
+            9. Create mode should be off to show the actual view of sidebar.
           </p>
         </CustomPopup>
       )}

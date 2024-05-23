@@ -50,8 +50,6 @@ const CustomPopup = ({ setIsPopupOpen, children, popupTitle }) => {
         {/* popup body  */}
         <div
           style={{
-            padding: "0px",
-            // minHeight: "80px",
             maxHeight: "400px",
             overflowY: "scroll",
             overflowX: "hidden",
