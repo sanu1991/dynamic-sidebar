@@ -25,7 +25,7 @@ const SidenavbarCom = React.forwardRef(
       searchIconColor: "white",
       expandableTime: ".5s",
       searchHighlightBackgroundColor: "#f2fa52",
-      collapseButtonColor: "white",
+      collapseButtonColor: "black",
     };
     const expandTypeData = [
       { id: "1", name: "click" },
@@ -390,7 +390,6 @@ const SidenavbarCom = React.forwardRef(
       zIndex: 1,
       position: "absolute",
       display: "flex",
-      backgroundColor: styleData?.backgroundColor,
     });
 
     // hot key (ctrl + alt + o  to open navbar) (ctrl + alt + c  to close navbar)
@@ -503,7 +502,14 @@ const SidenavbarCom = React.forwardRef(
           style={sidenavStyle()}
         >
           {/* left part */}
-          <div style={{ width: "100%", height: "100%", padding: "0px" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              padding: "2px",
+              backgroundColor: styleData?.backgroundColor,
+            }}
+          >
             <div style={{ width: "100%", padding: "0px 0px 5px 0px" }}>
               {/* expand Icon */}
               <div
@@ -641,7 +647,7 @@ const SidenavbarCom = React.forwardRef(
                 : Listmap(filterData, {})}
             </div>
           </div>
-          {/* right part collapse on/off btn */}
+          {/* right part (collapse on/off btn) */}
           {styleData?.expandType === "1" && (
             <span
               data-bs-toggle="tooltip"
@@ -658,6 +664,7 @@ const SidenavbarCom = React.forwardRef(
                 alignItems: "center",
                 textAlign: "center",
                 color: styleData?.collapseButtonColor,
+                backgroundColor: "rgba(0, 0, 0, 0.0)",
               }}
             >
               <i
@@ -681,10 +688,12 @@ const SidenavbarCom = React.forwardRef(
           <CustomPopup
             setIsPopupOpen={setIsStyleChPopupOpen}
             popupTitle="Change Sidebar Style"
+            overflowY="scroll"
           >
             <p className="m-2">Change Background Color</p>
             <TextboxComponent
               component={styleData?.backgroundColor}
+              autoFocus={true}
               placeholder="Enter Icon Color"
               elementName="backgroundColor"
               handleChange={(e) => handleStyleChange(e, "backgroundColor")}
@@ -692,7 +701,6 @@ const SidenavbarCom = React.forwardRef(
             <p className="m-2">Change Expand Type</p>
             <SelectboxComponent
               elementName="expandType"
-              autoFocus={true}
               component={styleData?.expandType}
               data={expandTypeData}
               handleChange={(e) => handleStyleChange(e, "expandType")}
@@ -782,6 +790,7 @@ const SidenavbarCom = React.forwardRef(
         )}
         {isPopupOpen && (
           <CustomPopup
+            overflowY="hidden"
             popupTitle="Create Sidebar Data"
             setIsPopupOpen={setIsPopupOpen}
           >

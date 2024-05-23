@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.png";
 import Sidenavbar from "../navbarcomponents/Sidenavbar";
 import CustomPopup from "../navbarcomponents/CustomPopup";
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 const Layout = () => {
   const childCompRef = React.useRef(null);
   // dummy data
@@ -26,7 +26,7 @@ const Layout = () => {
   //             icon: "",
   //             visible: false,
   //             caption: "Blogs",
-  //             link: "/blogs",
+  //             link: "/dynamic-sidebar/page1",
   //             sub: [],
   //           },
   //           {
@@ -34,7 +34,7 @@ const Layout = () => {
   //             icon: "",
   //             visible: false,
   //             caption: "Contact",
-  //             link: "/contact",
+  //             link: "/dynamic-sidebar/page2",
   //             sub: [],
   //           },
   //         ],
@@ -69,12 +69,10 @@ const Layout = () => {
       <div
         style={{
           width: "100%",
-          // height: "10vh",
-          // textAlign: "right",
           padding: "10px 20px",
           display: "flex",
           alignItems: "center",
-          justifyContent: "right"
+          justifyContent: "right",
         }}
       >
         <label
@@ -118,7 +116,11 @@ const Layout = () => {
         </div>
       </div>
       {guidePopupOpen && (
-        <CustomPopup setIsPopupOpen={setGuidePopupOpen} popupTitle="Step by step User Guide">
+        <CustomPopup
+          overflowY="hidden"
+          setIsPopupOpen={setGuidePopupOpen}
+          popupTitle="Step by step User Guide"
+        >
           <p>
             1. Click on{" "}
             <i style={{ fontSize: "12px" }} className="fa-solid fa-palette"></i>{" "}
@@ -135,7 +137,12 @@ const Layout = () => {
               style={{ fontSize: "10px", cursor: "pointer" }}
               className="fa-solid fa-edit"
             ></i>{" "}
-            icon to add caption, icon and link.
+            icon to add caption, icon(
+            <a href="https://fontawesome.com/search?o=r&m=free" target="_blank">
+              fontawesome
+            </a>
+            ) and link(in demo you can use: /dynamic-sidebar/page1 &
+            /dynamic-sidebar/page2).
           </p>
           <p>
             4. Click on{" "}
@@ -154,7 +161,7 @@ const Layout = () => {
             icon of created dropdown to create sub dropdown.
           </p>
           <p>
-            6. Click on{" "}
+            6. Move with{" "}
             <i
               style={{ fontSize: "10px", cursor: "pointer" }}
               className="fa-solid fa-up-down-left-right"
@@ -180,7 +187,8 @@ const Layout = () => {
               style={{ fontSize: "10px", cursor: "pointer" }}
               className="fa-solid fa-save"
             ></i>{" "}
-            icon to save dropdown and style data(saved data will show on your console).
+            icon to save dropdown and style data(saved data will show on your
+            console).
           </p>
           <p>
             9. Create mode should be off to show the actual view of sidebar.

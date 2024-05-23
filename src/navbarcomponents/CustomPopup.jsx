@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidenavbar.css";
 
-const CustomPopup = ({ setIsPopupOpen, children, popupTitle }) => {
+const CustomPopup = ({ overflowY, setIsPopupOpen, children, popupTitle }) => {
   return (
     <div
       style={{
@@ -22,7 +22,6 @@ const CustomPopup = ({ setIsPopupOpen, children, popupTitle }) => {
         style={{
           display: "block",
           backgroundColor: "white",
-          // zIndex: 9,
           border: "1px solid #f7f7f7",
           borderRadius: "10px",
         }}
@@ -50,8 +49,8 @@ const CustomPopup = ({ setIsPopupOpen, children, popupTitle }) => {
         {/* popup body  */}
         <div
           style={{
-            maxHeight: "400px",
-            overflowY: "scroll",
+            maxHeight: "450px",
+            overflowY: overflowY,
             overflowX: "hidden",
             padding: "0px 10px",
           }}

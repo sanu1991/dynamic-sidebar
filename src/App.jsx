@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/dynamic-sidebar" exact element={<Layout />}></Route>
-          <Route path="/dynamic-sidebar/blogs" exact element={<Blogs />}></Route>
-          <Route path="/dynamic-sidebar/contact" exact element={<Contact />}></Route>
+          <Route path="/dynamic-sidebar/page1" exact element={<Blogs />}></Route>
+          <Route path="/dynamic-sidebar/page2" exact element={<Contact />}></Route>
         </Routes>
       </BrowserRouter>
       
