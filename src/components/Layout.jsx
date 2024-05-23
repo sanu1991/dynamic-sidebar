@@ -118,7 +118,7 @@ const Layout = () => {
         </div>
       </div>
       {guidePopupOpen && (
-        <CustomPopup setIsPopupOpen={setGuidePopupOpen} popupTitle="User Guide">
+        <CustomPopup setIsPopupOpen={setGuidePopupOpen} popupTitle="Step by step User Guide">
           <p>
             1. Click on{" "}
             <i style={{ fontSize: "12px" }} className="fa-solid fa-palette"></i>{" "}
