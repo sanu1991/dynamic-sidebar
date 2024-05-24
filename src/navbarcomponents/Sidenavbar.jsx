@@ -11,7 +11,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import SelectboxComponent from "./SelectboxComponent";
 
 const SidenavbarCom = React.forwardRef(
-  ({ navbardata, activeCreateButton, logo, saveNewData }, ref) => {
+  ({ activeCreateButton, logo, saveNewData }, ref) => {
+    // ({ navbardata, activeCreateButton, logo, saveNewData }, ref) => {
     const cssData = {
       backgroundColor: "rgba(0, 0, 0, 0.7)",
       header: "1",
@@ -35,7 +36,7 @@ const SidenavbarCom = React.forwardRef(
       { id: "1", name: "normal" },
       { id: "2", name: "logo" },
     ];
-    const [navData, setNavData] = React.useState([...navbardata]);
+    const [navData, setNavData] = React.useState([]);
     const [styleData, setStyleData] = React.useState({ ...cssData });
     const [srchData, setsrchData] = React.useState("");
     const [filterData, setFilterData] = React.useState([]);
@@ -712,7 +713,7 @@ const SidenavbarCom = React.forwardRef(
               elementName="expandIconColor"
               handleChange={(e) => handleStyleChange(e, "expandIconColor")}
             />
-            <p className="m-2">Change Icon Devider Color</p>
+            <p className="m-2">Change Icon Divider Color</p>
             <TextboxComponent
               component={styleData?.expandIconDeviderColor}
               placeholder="Enter Expand Icon Devider Color"

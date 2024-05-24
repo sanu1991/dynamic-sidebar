@@ -43,18 +43,6 @@
 }
 
 
-/* .createModeSidenavWidth {
-    width: 30% !important;
-} */
-.popupSize {
-    width: 40% !important;
-    /* min-height: 30% !important;
-    max-height: 60% !important; */
-    /* height: auto; */
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
 .openSidenavWidth {
     width: 300px !important;
 }
@@ -81,52 +69,24 @@
     font-size: 15px !important;
 }
 
-/* @media (min-width: 575px) {
-    .createModeSidenavWidth {
-        width: 30% !important;
-    }
-    .createModeformWidth {
-        width: 70% !important;
-    }
-    .openSidenavWidth {
-        width: 200px !important;
-    }
+.popupSize {
+    width: 60% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
 
-} */
+@media (min-width: 575px) {
+    .popupSize {
+        width: 50% !important;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+}
 
 @media (min-width: 767px) {
-    /* .popupSize {
+    .popupSize {
         width: 40% !important;
-        height: 80% !important;
-    } */
-
-    /* .createModeSidenavWidth {
-        width: 30% !important;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
-    .createModeformWidth {
-        width: 70% !important;
-    }
-    .openSidenavWidth {
-        width: 300px !important;
-    }
-    .closeSidenavWidth {
-        width: 60px !important;
-    } */
-
-    /* .expandIconSize {
-        font-size: 25px !important;
-    }
-
-    .logoSize {
-        width: 30px !important;
-        height: 30px !important;
-    } */
-
-    /* .fontSize {
-        font-size: 15px !important;
-    } */
-
-    /* .srchIcon {
-        font-size: 15px !important;
-    } */
 }

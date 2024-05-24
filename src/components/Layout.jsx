@@ -61,8 +61,9 @@ const Layout = () => {
     >
       <Sidenavbar
         ref={childCompRef}
-        navbardata={navData}
+        // navbardata={navData}
         activeCreateButton={isCreateModeOn} // only for demo purpose
+        // activeCreateButton={true} // only for demo purpose
         saveNewData={() => saveNewData()}
         logo={logo} // mendatory if header="logo"
       />
@@ -117,7 +118,7 @@ const Layout = () => {
       </div>
       {guidePopupOpen && (
         <CustomPopup
-          overflowY="hidden"
+          overflowY="scroll"
           setIsPopupOpen={setGuidePopupOpen}
           popupTitle="Step by step User Guide"
         >
