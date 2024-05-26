@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Highlighter from "react-highlight-words";
-import "./Sidenavbar.css";
+import "./DynamicSidebar.css";
 import CustomPopup from "./CustomPopup";
 import TextboxComponent from "./TextboxComponent";
 import { v4 as uuidv4 } from "uuid";
@@ -10,9 +9,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import SelectboxComponent from "./SelectboxComponent";
 
-const SidenavbarCom = React.forwardRef(
+const DynamicSidebar = React.forwardRef(
   ({ activeCreateButton, logo, saveNewData }, ref) => {
-    // ({ navbardata, activeCreateButton, logo, saveNewData }, ref) => {
     const cssData = {
       backgroundColor: "rgba(0, 0, 0, 0.7)",
       header: "1",
@@ -160,6 +158,32 @@ const SidenavbarCom = React.forwardRef(
         }
       });
 
+    const highlightext = (paragraph) => {
+      if (srchData === "") return <span key={paragraph}>{paragraph}</span>;
+      if (!paragraph.includes(srchData))
+        return <span key={paragraph}>{paragraph}</span>;
+      const parts = paragraph.split(srchData);
+      return (
+        <span key={paragraph}>
+          {parts.map((part, i) => {
+            if (i === parts.length - 1) return <span key={i}>{part}</span>;
+            return (
+              <span key={i}>
+                {part}
+                <mark
+                  style={{
+                    backgroundColor: styleData?.searchHighlightBackgroundColor,
+                  }}
+                >
+                  {srchData}
+                </mark>
+              </span>
+            );
+          })}
+        </span>
+      );
+    };
+
     const navigate = useNavigate();
 
     // ------------------------------------------------- //
@@ -179,12 +203,11 @@ const SidenavbarCom = React.forwardRef(
           }}
         >
           <div
-            onClick={() => navigate(e?.link)}
+            onClick={() => !activeCreateButton && navigate(e?.link)}
             style={{ display: "flex", width: "100%", padding: "3px 0px" }}
           >
             {/* list icon */}
             <span
-              // className={iconColorClass}
               onMouseOver={(ele) =>
                 (ele.target.style.color = styleData?.iconHoverColor)
               }
@@ -218,15 +241,7 @@ const SidenavbarCom = React.forwardRef(
                   setNavData(visibleFunc(navData, e?.id));
                 }}
               >
-                <Highlighter
-                  highlightStyle={{
-                    backgroundColor: styleData?.searchHighlightBackgroundColor,
-                  }}
-                  highlightClassName="YourHighlightClass"
-                  searchWords={[srchData]}
-                  autoEscape={true}
-                  textToHighlight={e.caption}
-                />
+                {highlightext(e?.caption)}
               </span>
             )}
             {/* Add button */}
@@ -824,4 +839,4 @@ const SidenavbarCom = React.forwardRef(
   }
 );
 
-export default React.memo(SidenavbarCom);
+export default DynamicSidebar;

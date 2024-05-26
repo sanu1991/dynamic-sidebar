@@ -1,5 +1,5 @@
 import React from "react";
-import "./Sidenavbar.css";
+import "./DynamicSidebar.css";
 
 const CustomPopup = ({ overflowY, setIsPopupOpen, children, popupTitle }) => {
   return (

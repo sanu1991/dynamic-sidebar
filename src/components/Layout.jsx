@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import logo from "./logo.png";
-import Sidenavbar from "../navbarcomponents/Sidenavbar";
+// import logo from "./logo.png";
+// import Sidenavbar from "../navbarcomponents/Sidenavbar";
 import CustomPopup from "../navbarcomponents/CustomPopup";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
+import DynamicSidebar from "../navbarcomponents/DynamicSidebar";
 const Layout = () => {
   const childCompRef = React.useRef(null);
   // dummy data
@@ -59,13 +60,11 @@ const Layout = () => {
         height: "100vh",
       }}
     >
-      <Sidenavbar
+      <DynamicSidebar
         ref={childCompRef}
-        // navbardata={navData}
         activeCreateButton={isCreateModeOn} // only for demo purpose
-        // activeCreateButton={true} // only for demo purpose
         saveNewData={() => saveNewData()}
-        logo={logo} // mendatory if header="logo"
+        // logo={logo} // mendatory if header="logo"
       />
       <div
         style={{

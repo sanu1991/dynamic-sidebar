@@ -8,7 +8,6 @@ function SelectboxComponent({
   handleChange,
   elementName,
 }) {
-
   return (
     <>
       <div className="m-2">
@@ -19,8 +18,10 @@ function SelectboxComponent({
           value={component}
           onChange={(e) => handleChange(e?.target?.value, elementName)}
         >
-          {data.map((d) => (
-            <option value={d?.id}>{d?.name}</option>
+          {data.map((d, i) => (
+            <option key={i} value={d?.id}>
+              {d?.name}
+            </option>
           ))}
         </select>
       </div>
